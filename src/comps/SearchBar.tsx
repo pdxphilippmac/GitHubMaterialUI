@@ -33,6 +33,7 @@ interface Response {
     id: string
     title: string
     body: string
+    stargazers_count: number
 
 }
 
@@ -63,6 +64,7 @@ export const SearchBar = (): JSX.Element => {
                     ev: React.ChangeEvent<HTMLInputElement>,
                 ): void => setSearch(ev.target.value)}
             />
+
             {search && data.map(item =>
                 <Grid container alignContent="center" justify="center" className={classes.container}>
                     <Paper className={classes.root}>
@@ -70,6 +72,7 @@ export const SearchBar = (): JSX.Element => {
                             {item.name}
                         </Typography>
                         <p>{item.description}</p>
+                        <p>{item.stargazers_count}</p>
                     </Paper>
                 </Grid>)
             }
