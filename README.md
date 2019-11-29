@@ -1,3 +1,7 @@
+# Practice App for MaterialUI. Search github for usernames and show their repos.
+
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts

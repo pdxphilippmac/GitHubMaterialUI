@@ -12,6 +12,7 @@ import MenuIcon from '@material-ui/icons/Menu';
 import AddIcon from '@material-ui/icons/Add';
 import SearchIcon from '@material-ui/icons/Search';
 import MoreIcon from '@material-ui/icons/MoreVert';
+import SimpleDialogDemo from './DialogPopUp';
 
 const useStyles = makeStyles(theme => ({
     text: {
@@ -58,13 +59,18 @@ export const BottomAppBar: FC<BottomAppBarProps> = () => {
             <Fab color="secondary" aria-label="add" className={classes.fabButton}>
                 <AddIcon onClick={() => alert("Search for Repos")} />
             </Fab>
+            <Fab color="secondary" aria-label="add" className={classes.fabButton}>
+                <SimpleDialogDemo />
+            </Fab>
             <div className={classes.grow} />
             <IconButton color="inherit">
                 <SearchIcon onClick={() => alert("no search")} />
+
             </IconButton>
             <IconButton edge="end" color="inherit">
                 <MoreIcon />
             </IconButton>
+
         </Toolbar>
     </AppBar>)
 }
