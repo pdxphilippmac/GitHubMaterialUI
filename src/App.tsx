@@ -5,6 +5,7 @@ import './App.css';
 import { Grid, Typography } from '@material-ui/core'
 import { makeStyles, Theme } from '@material-ui/core/styles'
 import { BottomAppBar } from "./comps/AppBar"
+import { SearchBar } from "./comps/SearchBar"
 
 
 
@@ -12,17 +13,15 @@ const useStyles = makeStyles<Theme>(theme => ({
   container: {
     padding: '20px 0',
     backgroundColor: "#00838f"
+
   },
-  icon: {
-    marginTop: 30,
-    width: 150,
-    height: 150,
-    color: theme.palette.primary.main,
-  },
+
   typo: {
     display: 'block',
     marginTop: 30,
-  },
+  }, heading: {
+
+  }
 }))
 
 
@@ -31,14 +30,16 @@ const App: React.FC = () => {
   return (
     <div className="App">
 
+
       <Grid container alignContent="center" justify="center" className={classes.container}>
         <Grid item xs={6}>
+          <SearchBar />
           <header className="App-header">
             <img src={logo} className="App-logo" alt="logo" />
             <Typography variant="h4" className={classes.heading} align="center">
-              GitHub App MaterialUI
+              MaterialUI
         </Typography>
-            <Typography variant="h1" className={classes.heading} align="center">
+            <Typography variant="h1" className={classes.typo} align="center">
               GitHub Repo Finder
         </Typography>
             {/* <DataWrapper title="DataWrapper" /> */}

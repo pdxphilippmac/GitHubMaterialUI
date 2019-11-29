@@ -1,7 +1,7 @@
 import React, { FC, useState, useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
-import InputBase from '@material-ui/core/InputBase';
+
 
 import Toolbar from '@material-ui/core/Toolbar';
 
@@ -14,7 +14,7 @@ import AddIcon from '@material-ui/icons/Add';
 import SearchIcon from '@material-ui/icons/Search';
 import MoreIcon from '@material-ui/icons/MoreVert';
 import SimpleDialogDemo from './DialogPopUp';
-import { SearchBar } from './SearchBar';
+
 
 const useStyles = makeStyles(theme => ({
     text: {
@@ -50,7 +50,8 @@ const useStyles = makeStyles(theme => ({
     appBar: {
         top: 'auto',
         bottom: 0,
-        backgroundColor: "#004d40"
+        backgroundColor: "#004d40",
+        boxShadow: "0 0 20px 2px black"
 
     },
     grow: {
@@ -63,7 +64,8 @@ const useStyles = makeStyles(theme => ({
         left: 0,
         right: 0,
         margin: '0 auto',
-        backgroundColor: "#d81b60"
+        backgroundColor: "#d81b60",
+        boxShadow: "0 10px 20px 2px black"
     },
 }));
 
@@ -73,17 +75,7 @@ interface AppProps {
 
 }
 
-interface Response {
-    userID: number
-    id: string
-    title: string
-    body: string
 
-}
-interface Search {
-    value: string
-
-}
 
 interface BottomAppBarProps {
 
@@ -91,19 +83,6 @@ interface BottomAppBarProps {
 }
 
 export const BottomAppBar: FC<BottomAppBarProps> = () => {
-    const [search, setSearch] = useState<Search>()
-    const [data, setData] = useState<Response[]>([])
-    const getName = async () => {
-
-        let res = await fetch("https://api.github.com/users/pdxphilippmac/repos?sort=full_name")
-        let data = await res.json()
-        setData(data)
-    }
-
-    useEffect(() => {
-        getName()
-    }, []);
-
 
 
 
@@ -121,9 +100,10 @@ export const BottomAppBar: FC<BottomAppBarProps> = () => {
                 <SimpleDialogDemo />
             </Fab>
             <div className={classes.grow} />
-            <SearchBar />
+
             <IconButton color="inherit">
                 <SearchIcon onClick={() => alert("no search")} />
+
 
             </IconButton>
 

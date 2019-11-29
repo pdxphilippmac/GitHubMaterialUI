@@ -11,6 +11,7 @@ import Dialog from '@material-ui/core/Dialog';
 import PersonIcon from '@material-ui/icons/Person';
 import AddIcon from '@material-ui/icons/Add';
 
+
 import { blue } from '@material-ui/core/colors';
 
 
@@ -37,7 +38,9 @@ function SimpleDialog(props: SimpleDialogProps) {
     };
 
     const handleListItemClick = (value: string) => {
+
         onClose(value);
+
     };
 
     return (
@@ -47,9 +50,11 @@ function SimpleDialog(props: SimpleDialogProps) {
                 {emails.map(email => (
                     <ListItem button onClick={() => handleListItemClick(email)} key={email}>
                         <ListItemAvatar>
+
                             <Avatar className={classes.avatar}>
                                 <PersonIcon />
                             </Avatar>
+
                         </ListItemAvatar>
                         <ListItemText primary={email} />
                     </ListItem>
