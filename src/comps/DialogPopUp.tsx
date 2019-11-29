@@ -14,7 +14,7 @@ import AddIcon from '@material-ui/icons/Add';
 import { blue } from '@material-ui/core/colors';
 
 
-const emails = ['username@gmail.com', 'user02@gmail.com'];
+const emails = ['pdxphilippmac', 'BuildsOfWarcraft'];
 const useStyles = makeStyles({
     avatar: {
         backgroundColor: blue[100],
@@ -42,7 +42,7 @@ function SimpleDialog(props: SimpleDialogProps) {
 
     return (
         <Dialog onClose={handleClose} aria-labelledby="simple-dialog-title" open={open}>
-            <DialogTitle id="simple-dialog-title">    Favorite Users</DialogTitle>
+            <DialogTitle id="simple-dialog-title">    Favorite User Repos</DialogTitle>
             <List>
                 {emails.map(email => (
                     <ListItem button onClick={() => handleListItemClick(email)} key={email}>
@@ -60,7 +60,7 @@ function SimpleDialog(props: SimpleDialogProps) {
                             <AddIcon />
                         </Avatar>
                     </ListItemAvatar>
-                    <ListItemText primary="add account" />
+                    <ListItemText primary="add Favorite" />
                 </ListItem>
             </List>
         </Dialog>

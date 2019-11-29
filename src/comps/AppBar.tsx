@@ -1,6 +1,7 @@
-import React, { FC } from 'react';
+import React, { FC, useState, useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
+import InputBase from '@material-ui/core/InputBase';
 
 import Toolbar from '@material-ui/core/Toolbar';
 
@@ -13,10 +14,29 @@ import AddIcon from '@material-ui/icons/Add';
 import SearchIcon from '@material-ui/icons/Search';
 import MoreIcon from '@material-ui/icons/MoreVert';
 import SimpleDialogDemo from './DialogPopUp';
+import { SearchBar } from './SearchBar';
 
 const useStyles = makeStyles(theme => ({
     text: {
         padding: theme.spacing(2, 2, 0),
+    },
+    root: {
+        flexGrow: 1,
+    },
+
+    inputInput: {
+        padding: theme.spacing(1, 1, 1, 7),
+        transition: theme.transitions.create('width'),
+        width: '100%',
+        [theme.breakpoints.up('sm')]: {
+            width: 120,
+            '&:focus': {
+                width: 200,
+            },
+        },
+    },
+    inputRoot: {
+        color: 'inherit',
     },
     paper: {
         paddingBottom: 50,
@@ -47,9 +67,47 @@ const useStyles = makeStyles(theme => ({
     },
 }));
 
-interface BottomAppBarProps { }
+
+interface AppProps {
+    props: string
+
+}
+
+interface Response {
+    userID: number
+    id: string
+    title: string
+    body: string
+
+}
+interface Search {
+    value: string
+
+}
+
+interface BottomAppBarProps {
+
+
+}
 
 export const BottomAppBar: FC<BottomAppBarProps> = () => {
+    const [search, setSearch] = useState<Search>()
+    const [data, setData] = useState<Response[]>([])
+    const getName = async () => {
+
+        let res = await fetch("https://api.github.com/users/pdxphilippmac/repos?sort=full_name")
+        let data = await res.json()
+        setData(data)
+    }
+
+    useEffect(() => {
+        getName()
+    }, []);
+
+
+
+
+
     const classes = useStyles();
     return (<AppBar position="fixed" color="primary" className={classes.appBar}>
         <Toolbar>
@@ -63,14 +121,19 @@ export const BottomAppBar: FC<BottomAppBarProps> = () => {
                 <SimpleDialogDemo />
             </Fab>
             <div className={classes.grow} />
+            <SearchBar />
             <IconButton color="inherit">
                 <SearchIcon onClick={() => alert("no search")} />
 
             </IconButton>
+
+
             <IconButton edge="end" color="inherit">
                 <MoreIcon />
             </IconButton>
 
+
         </Toolbar>
+
     </AppBar>)
 }
